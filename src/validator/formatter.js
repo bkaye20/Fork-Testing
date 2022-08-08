@@ -1,6 +1,7 @@
 function trim(){
-    let s="Function Up"
-    console.log("String:",s)
+    let s=" Function Up "
+    console.log("Trimmed String",s.trim())
+    
     
 }
 function changetoLowerCase(){
