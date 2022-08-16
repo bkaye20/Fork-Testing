@@ -1,14 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const UserModel= require("../models/userModel.js")
-const UserController= require("../controllers/userController")
+const userModel2= require("../models/userModel2.js")
 
 router.get("/test-me", function (req, res) {
-    res.send("My first ever api!")
+    res.send("MongoDB Testing")
 })
 
-router.post("/createUser", UserController.createUser  )
+router.post("/createBook", async function (req,res){
+    let data = req.body
+    let savedData = await  userModel2.create(data)
+    res.send({ msg: savedData})
 
-router.get("/getUsersData", UserController.getUsersData)
+})
+
+router.get("/getBookData", async function (req,res){
+    let allBooks = await userModel2.find()
+    res.send({msg: allBooks})
+
+})
+
+
 
 module.exports = router;
